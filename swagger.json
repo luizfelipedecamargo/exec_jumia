@@ -1,0 +1,271 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.2",
+    "title": "Jumia Exercise by Luiz Felipe de Camargo",
+    "contact": {}
+  },
+  "host": "localhost:8080",
+  "basePath": "/customer",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/listAll": {
+      "get": {
+        "summary": "listaAll",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "listaAll",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/exist/Luiz Felipe": {
+      "get": {
+        "summary": "exists",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "exists",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/add": {
+      "post": {
+        "summary": "add",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "add",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/addrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/upd": {
+      "put": {
+        "summary": "upd",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "upd",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/del": {
+      "delete": {
+        "summary": "del",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "del",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/delrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "addrequest": {
+      "title": "addrequest",
+      "example": {
+        "customerId": 41,
+        "customerName": "Luiz Felipe",
+        "customerPhone": "598054317",
+        "countryId": 212,
+        "stateId": "AGD"
+      },
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "countryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "stateId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "customerId",
+        "customerName",
+        "customerPhone",
+        "countryId",
+        "stateId"
+      ]
+    },
+    "updrequest": {
+      "title": "updrequest",
+      "example": {
+        "customerId": 41,
+        "customerName": "Luiz Felipe",
+        "customerPhone": "698054444",
+        "countryId": 212,
+        "stateId": "AGD"
+      },
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "countryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "stateId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "customerId",
+        "customerName",
+        "customerPhone",
+        "countryId",
+        "stateId"
+      ]
+    },
+    "delrequest": {
+      "title": "delrequest",
+      "example": {
+        "customerId": 41,
+        "customerName": "Lui Felipe",
+        "customerPhone": "698054399",
+        "countryId": 212,
+        "stateId": "AGD"
+      },
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "countryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "stateId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "customerId",
+        "customerName",
+        "customerPhone",
+        "countryId",
+        "stateId"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
