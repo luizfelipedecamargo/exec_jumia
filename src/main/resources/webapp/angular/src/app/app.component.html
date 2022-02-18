@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-gray my-5">
+        <h2 style="text-align: center;"><b>Jumia Programming Exercise</b></h2>
+        <h4 style="text-align: center;">List and Categorize Country Phone Numbers</h4>
+        <div class="card-body">
+          
+          <mat-tab-group>
+            <mat-tab label="Country">
+
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Search..." (keyup)="updateFilter($event,1)">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <ngx-datatable #tbdados class="material" [rows]="countries" [columnMode]="ColumnMode.force"
+                    [headerHeight]="50"  [footerHeight]="50" rowHeight="auto" [limit]="20"
+                    [messages]="{ totalMessage: 'registers found'}">
+
+                    <ngx-datatable-column prop="countryId" name="Id">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.countryId }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="countryName" name="Name">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.countryName }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                  </ngx-datatable>
+                </div>
+              </div>
+
+              <button mat-flat-button class="btn btn-info" (click)="getData(1)">
+                <b>Click to Load</b>
+              </button>
+
+            </mat-tab>
+
+            <mat-tab label="State">
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Search..." (keyup)="updateFilter($event,2)">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <ngx-datatable #tbdados class="material" [rows]="states" [columnMode]="ColumnMode.force"
+                    [headerHeight]="50"  [footerHeight]="50" rowHeight="auto" [limit]="20"
+                    [messages]="{ totalMessage: 'registers found'}">
+
+                    <ngx-datatable-column prop="countryId" name="Country">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.country.countryId }} - {{ row?.country.countryName }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="stateId" name="Id">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.id.stateId }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="stateName" name="Name">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.stateName }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                  </ngx-datatable>
+                </div>
+              </div>
+
+              <button mat-flat-button class="btn btn-info" (click)="getData(2)">
+                <b>Click to Load</b>
+              </button>
+
+            </mat-tab>
+            <mat-tab label="Customer">
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Search..." (keyup)="updateFilter($event,3)">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <ngx-datatable #tbdados class="material" [rows]="customers" [columnMode]="ColumnMode.force"
+                    [headerHeight]="50"  [footerHeight]="50" rowHeight="auto" [limit]="20"
+                    [messages]="{ totalMessage: 'registers found'}">
+
+
+                    <ngx-datatable-column prop="countryId" name="Location">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.state.stateName }} ( {{ row?.state.country.countryName }} )
+                      </ng-template>
+                    </ngx-datatable-column>                    
+
+                    <ngx-datatable-column prop="customerId" name="Id">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.customerId }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="customerName" name="Name">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{ row?.customerName }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="customerPhone" name="Phone">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{  this.utilService.maskPhoneNumber(row?.customerPhone, row?.state.country.countryId) }}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="isValid" name="Valid">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{  this.utilService.isValid(row?.customerPhone, row?.state.country.countryId) }}
+                      </ng-template>
+                    </ngx-datatable-column>                    
+
+                  </ngx-datatable>
+                </div>
+              </div>
+
+              <button mat-flat-button class="btn btn-info" (click)="getData(3)">
+                <b>Click to Load</b>
+              </button>
+            </mat-tab>
+          </mat-tab-group>
+
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<h6 style="text-align: center;">Powered by Luiz Felipe de Camargo</h6>
